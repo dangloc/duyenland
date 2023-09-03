@@ -1,6 +1,6 @@
-import { g, auth, config } from '@grafbase/sdk'
-import { use } from 'react'
+import { g, config, auth } from '@grafbase/sdk';
 
+// @ts-ignore
 const User = g.model('User', {
   name: g.string().length({min: 6, max: 30}),
   email: g.string().unique(),
@@ -11,6 +11,7 @@ const User = g.model('User', {
   posts: g.relation(() => Post).list().optional(),
 })
 
+// @ts-ignore
 const Post = g.model('Post', {
   title: g.string().length({min: 6}),
   description: g.string(),
