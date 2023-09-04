@@ -9,6 +9,8 @@ const User = g.model('User', {
   facebookUrl: g.url().optional(),
   githubUrl: g.url().optional(),
   posts: g.relation(() => Post).list().optional(),
+}).auth((rules) => {
+  rules.public().read()
 })
 
 // @ts-ignore
@@ -20,7 +22,19 @@ const Post = g.model('Post', {
   githubUrl: g.url(),
   category: g.string().search(),
   createdBy: g.relation(() => User),
+}).auth((rules) => {
+  rules.public().read()
+  rules.private().create().delete().update()
+})
+
+const jwt = auth.JWT({
+  issuer: 'grafbase',
+  secret: g.env('NEXTAUTH_SECRET'),
 })
 export default config({
-  schema: g
+  schema: g,
+  auth: {
+    providers: [jwt],
+    rules: (rules) => rules.private(),
+  }
 })

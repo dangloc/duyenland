@@ -28,4 +28,9 @@ body {
   .max-w-2xl{
     @apply max-w-[1240px]
   }
+
+  .profile_menu-items {
+    @apply flex-col absolute right-1/2 translate-x-1/2 mt-3 p-7 sm:min-w-[300px] min-w-max rounded-xl border;
+  }
 }
+

@@ -16,7 +16,7 @@ const Footer = () => {
             />
           </Link>
           <p className="mt-2 font-light" >
-            Duyen Land - chuyên BĐS Quảng Nam - Đà Nẵng
+            Duyên Land - Chuyên BĐS Quảng Nam - Đà Nẵng
           </p>
         </div>
       </div>
